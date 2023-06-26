@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% block title %}Guest Post{% endblock title %}
+
+{% block body %}
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Hello!</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+
+{% comment %} <div class="container mt-4">
+    <form action="/post_blog/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="Enter the post title">
+        </div>
+        
+        <div class="form-group mt-4">
+          <label for="exampleFormControlTextarea1">Enter The Full Post</label>
+          <textarea class="form-control" placeholder="Enter the content" name="desc" rows="3"></textarea>
+        </div>
+        <input type="submit" value="submit" class="btn btn-primary mt-4"> 
+      </form>
+</div> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="" method="post">
+    {%csrf_token%}
+    {{edit_blog.as_p}}
+    <input type="submit" value="Edit">
+  </form>
+</body>
+</html>
+{% endblock body %}

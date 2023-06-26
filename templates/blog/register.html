@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Hello!</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<div class="container mt-3">
+    <form action="" method="post">
+        {% csrf_token %}
+    <div class="row jumbotron box8">
+      <div class="col-sm-12 mx-t3 mb-4">
+        <h2 class="text-center text-info">Register</h2>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="name-f">First Name</label>
+        <input type="text" class="form-control" name="fname" id="name-f" placeholder="Enter your first name." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="name-l">Last name</label>
+        <input type="text" class="form-control" name="lname" id="name-l" placeholder="Enter your last name." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="username">User Name</label>
+        <input type="text" class="form-control" name="uname" id="uname" placeholder="Enter your Username" required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="pass">Password</label>
+        <input type="Password" name="password" class="form-control" id="pass" placeholder="Enter your password." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="Password" name="cnf-password" class="form-control" id="pass2" placeholder="Re-enter your password." required>
+      </div>
+
+      <div class="col-sm-12 form-group mb-0">
+        <button type="submit" class="btn btn-primary float-right mt-4">Sign Up</button>
+      </div>
+
+    </div>
+    {% endblock body %}
+</div>
