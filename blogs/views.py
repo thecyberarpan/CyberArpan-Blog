@@ -14,7 +14,7 @@ from.forms import Edit_Blog
 def Index(request):
     content = Blog.objects.all()
     params = {'blogs':content}
-    return render(request, 'blog/index.html',  params)
+    return render(request, 'blog/index2.html',  params)
 
 
 def Register(request):
@@ -66,8 +66,9 @@ def UploadPost(request):
         title = request.POST.get('title')
         excerpt = request.POST.get('excerpt')
         desc = request.POST.get('desc')
+        img = request.FILE['images']
         user = request.user  # Get the current authenticated user
-        blog = Blog(user_id=user, title=title, excerpt=excerpt, desc=desc)
+        blog = Blog(user_id=user, title=title, excerpt=excerpt, desc=desc, upload = img)
         blog.save()
         messages.success(request, "Post is successfully submitted.")
         return redirect("/")
@@ -96,6 +97,3 @@ def EditBlog(request, id):
             messages.success(request, "Post has been updated..")
             return redirect('/')
     return render(request, 'blog/edit.html', {'edit_blog':editblog})
-# from django.contrib.auth.decorators import login_required
-
-# @login_required

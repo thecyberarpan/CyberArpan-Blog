@@ -5,6 +5,7 @@
 
 
 {% block body %}
+
 {% for message in messages %}
 <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
   <strong>Hello!</strong> {{message}}
@@ -12,17 +13,23 @@
 </div>
 {% endfor %}
 <div class="container mt-4">
-<form action="/upload-post/" method="post">
+  <form action="/upload-post/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
         <label for="exampleFormControlInput1">Title</label>
         <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="Enter the post title">
       </div>
-    <div class="form-group">
+    <div class="form-group my-3">
         <label for="exampleFormControlInput1">Excerpt</label>
         <input type="text" class="form-control" name="excerpt" id="exampleFormControlInput1" placeholder="Enter the excerpt">
       </div>
       
+      {% comment %} <div class="mb-3 my-3">
+        <label for="formFileSm" class="form-label">Upload Thumbnail</label>
+        <input class="form-control form-control-sm" name = "image" id="formFileSm" type="file">
+      </div> {% endcomment %}
+      <div>
+
       <div class="form-group mt-4">
         <label for="exampleFormControlTextarea1">Enter The Full Post</label>
         <textarea class="form-control" placeholder="Enter the content" name="desc" rows="3"></textarea>
